@@ -42,15 +42,36 @@ function getGrid(squares) {
         grandparentContainer.append(parentContainer);
     }
     const grids = document.querySelectorAll(".grid");
-
+    let R, B, G;
     grids.forEach((grid) => {
+        let hue = 0.1;
         grid.addEventListener("mouseover", (event) => {
-            event.target.style.backgroundColor = "black";
-            console.log("Mouse overing");
+            
+            // if (event.target.style.backgroundColor != "") {
+            //     event.target.style.backgroundColor = "rgba(" + R + ", " + G + ", " + B + ", " + hue + ")";
+            //     hue += 0.1;
+            // }
+            // else {
+            //     R = Math.random() * 256;
+            //     B = Math.random() * 256;
+            //     G = Math.random() * 256;
+            //     event.target.style.backgroundColor = "rgb(" + R + ", " + G + ", " + B + ")";
+            // }
+
         });
         grid.addEventListener("mouseout", (event) => {
-            event.target.style.backgroundColor = "black";
-            console.log("Mouse outing");
+            
+            if (event.target.style.backgroundColor != "") {
+                hue += 0.1;
+                event.target.style.backgroundColor = "rgba(" + R + ", " + G + ", " + B + ", " + hue + ")";
+                
+            }
+            else {
+                R = Math.random() * 256;
+                B = Math.random() * 256;
+                G = Math.random() * 256;
+                event.target.style.backgroundColor = "rgba(" + R + ", " + G + ", " + B + ", " + hue + ")";
+            }
         });
     });
 }
