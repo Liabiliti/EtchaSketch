@@ -1,9 +1,27 @@
 const grandparentContainer = document.querySelector(".container");
+const slider = document.querySelector("#grids");
+const value = document.querySelector(".gridValue");
+const popupButton = document.querySelector(".popup");
+const submit = document.querySelector(".submit");
 
-grandparentContainer.style.width = "960px";
-grandparentContainer.style.height = "960px";
+popupButton.addEventListener("click", function()
+{
+    var popup = document.querySelector(".popupContainer");
+    popup.classList.toggle("show");
+    grandparentContainer.classList.toggle("show");
+})
+
+slider.addEventListener("click", function()
+{
+    value.textContent = slider.value;
+})
+
+grandparentContainer.style.width = "480px";
+grandparentContainer.style.height = "480px";
 
 let squares = 100;
+
+
 
 function getGrid(squares) {
     for (let i = 0; i < squares; i++) {
@@ -14,7 +32,6 @@ function getGrid(squares) {
             gridSquares.style.width = 480 / squares + 'px';
             gridSquares.style.height = 480 / squares + 'px';
             gridSquares.classList = "grid";
-            gridSquares.style.border = 'black solid 1px';
             parentContainer.append(gridSquares);
         }
         grandparentContainer.append(parentContainer);
